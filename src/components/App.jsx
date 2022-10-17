@@ -17,7 +17,11 @@ export class App extends Component {
   formSubmitHandler = data => {
     const { contacts } = this.state;
 
-    if (contacts.find(({ name }) => name === data.name))
+    if (
+      contacts.find(
+        ({ name }) => name.toLowerCase() === data.name.toLowerCase()
+      )
+    )
       return alert(`${data.name} is alredy in contacts`);
 
     const todo = { id: nanoid(), ...data };
